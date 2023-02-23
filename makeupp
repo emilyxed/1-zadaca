@@ -1,0 +1,61 @@
+using System;
+
+namespace MusicSchool
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] ages = new int[8]; 
+            
+            Console.WriteLine("Enter the ages of the students:");
+            for (int i = 0; i < 8; i++)
+            {
+                Console.Write("Student {0}: ", i+1);
+                ages[i] = int.Parse(Console.ReadLine());
+            }
+            
+            int youngest = ages[0];
+            int oldest = ages[0];
+            foreach (int age in ages)
+            {
+                if (age < youngest)
+                {
+                    youngest = age;
+                }
+                else if (age > oldest)
+                {
+                    oldest = age;
+                }
+            }
+            
+            int youngestCount = 0;
+            int oldestCount = 0;
+            foreach (int age in ages)
+            {
+                if (age == youngest)
+                {
+                    youngestCount++;
+                }
+                if (age == oldest)
+                {
+                    oldestCount++;
+                }
+            }
+            
+            Console.WriteLine("Youngest student in the group is {0} years old", youngest);
+            if (youngestCount > 1)
+            {
+                Console.WriteLine("There are {0} students at that age in the group", youngestCount);
+            }
+            Console.WriteLine("Oldest student in the group is {0} years old", oldest);
+            if (oldestCount > 1)
+            {
+                Console.WriteLine("There are {0} students at that age in the group", oldestCount);
+            }
+            
+            // wait for the user to press a key before closing the program
+            Console.ReadKey();
+        }
+    }
+}
